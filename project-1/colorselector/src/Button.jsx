@@ -1,7 +1,15 @@
 import React from 'react';
-
-const Button = () => {
-	return <div>Button</div>;
+import './Button.css';
+const Button = (prop) => {
+	return (
+		<div
+			className="button"
+			style={{ backgroundColor: prop.color }}
+			onClick={prop.onClick}
+		>
+			Button
+		</div>
+	);
 };
 
 export default Button;
