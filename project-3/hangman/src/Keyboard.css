@@ -1,0 +1,43 @@
+.Keyboard {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* Centers the keyboard keys horizontally */
+
+	width: 400px; /* Set a fixed width so that keys wrap correctly */
+	margin-top: 20px; /* Adds space above the keyboard */
+}
+.Keyboard button {
+	background-color: #3498db; /* Base button color */
+	border: none;
+	color: white;
+	padding: 12px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	box-shadow: 0 5px #2980b9; /* Shadow at the bottom for the 3D effect */
+	transition: all 0.2s ease;
+}
+.keyboardbutton:hover {
+	box-shadow: 0 3px #2980b9;
+	transform: translateY(-2px);
+}
+.Keyboard button:active {
+	box-shadow: 0 1px #2980b9;
+	transform: translateY(2px);
+}
+.Keyboard .letter {
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	font-size: 18px;
+	background-color: lightgray;
+	border-radius: 4px;
+	cursor: pointer;
+}

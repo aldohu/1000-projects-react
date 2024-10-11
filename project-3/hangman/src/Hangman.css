@@ -1,0 +1,8 @@
+.Hangman {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 20px; /* Adds space between the components */
+	padding: 50px; /* Reduced padding for better layout */
+}
