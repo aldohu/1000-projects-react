@@ -123,7 +123,7 @@ const Hangman = () => {
 
 	return (
 		<div className="Hangman">
-			<Image />
+			<Image guesses={guesses} />
 			<Word
 				guessedLetters={guessedLetters}
 				wordToGuess={wordToGuess}
