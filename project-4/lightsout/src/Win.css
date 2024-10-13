@@ -1,0 +1,53 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.neon-container {
+	perspective: 1000px; /* Adds perspective to the 3D effect */
+}
+
+.neon-text {
+	font-size: 5rem; /* Large font size for prominence */
+	font-weight: bold;
+	color: #fff; /* Default text color */
+	text-align: center;
+	text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+		/* Light blue glow */ 0 0 10px rgba(0, 255, 255, 0.7),
+		0 0 20px rgba(0, 255, 255, 0.9), 0 0 30px rgba(0, 0, 255, 0.5),
+		/* Deep blue glow */ 0 0 40px rgba(0, 0, 255, 0.7),
+		0 0 50px rgba(0, 0, 255, 0.9);
+
+	transform: translateZ(0); /* Enables 3D effect */
+	animation: neon-flicker 3.5s infinite alternate,
+		neon-pulse 3s infinite alternate; /* Added pulse effect */
+}
+
+@keyframes neon-flicker {
+	0% {
+		text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.7),
+			0 0 20px rgba(0, 255, 255, 0.9), 0 0 30px rgba(0, 0, 255, 0.5),
+			0 0 40px rgba(0, 0, 255, 0.7), 0 0 50px rgba(0, 0, 255, 0.9);
+		transform: scale(1); /* Original scale */
+	}
+	100% {
+		text-shadow: 0 0 10px rgba(0, 255, 255, 0.5),
+			0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.9),
+			0 0 40px rgba(0, 0, 255, 0.5), 0 0 50px rgba(0, 0, 255, 0.7),
+			0 0 60px rgba(0, 0, 255, 0.9);
+		transform: scale(1.1); /* Slightly enlarge */
+	}
+}
+
+@keyframes neon-pulse {
+	0%,
+	100% {
+		transform: scale(1); /* Original scale */
+	}
+	50% {
+		transform: scale(1.05); /* Slightly enlarge */
+	}
+}
