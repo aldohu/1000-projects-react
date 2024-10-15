@@ -1,6 +1,7 @@
 import React from 'react';
 import Add from './Add';
 import './Todo.css';
+import Addreactway from './Addreactway';
 const Todo = () => {
 	const [tasks, setTasks] = React.useState(['Task 1', 'Task 2', 'Task 3']);
 
@@ -29,7 +30,7 @@ const Todo = () => {
 				</tbody>
 			</table>
 
-			<Add onSubmit={handleSubmit} />
+			<Addreactway />
 		</div>
 	);
 };
