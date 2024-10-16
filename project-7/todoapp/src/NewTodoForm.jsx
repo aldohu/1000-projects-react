@@ -1,35 +1,26 @@
-import React from 'react';
-import './NewTodoForm.css';
-const NewTodoForm = (props) => {
-	const [newTodoText, setNewTodoText] = React.useState('');
+import React, { useState } from 'react';
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
+const NewTodoForm = ({ onSubmit }) => {
+	const [inputValue, setInputValue] = useState('');
 
-		// Update todos
-		props.setTodos([
-			...props.todos,
-			{
-				text: newTodoText,
-				isCompleted: false,
-			},
-		]);
-
-		// Clear the input field after submission
-		setNewTodoText('');
+	const handleSubmit = (e) => {
+		e.preventDefault(); // Prevent default form submission
+		if (inputValue.trim()) {
+			onSubmit(inputValue); // Call the onSubmit prop with input value
+			setInputValue(''); // Clear the input field
+		}
 	};
 
 	return (
-		<div className="NewTodoForm">
-			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					value={newTodoText} // Controlled input
-					onChange={(e) => setNewTodoText(e.target.value)}
-				/>
-				<button type="submit">Add a new todo</button>
-			</form>
-		</div>
+		<form onSubmit={handleSubmit}>
+			<input
+				type="text"
+				value={inputValue}
+				onChange={(e) => setInputValue(e.target.value)}
+				placeholder="Add a new todo..."
+			/>
+			<button type="submit">Add Todo</button>
+		</form>
 	);
 };
 

@@ -5,3 +5,9 @@
 	justify-content: center;
 	height: 100vh;
 }
+.todo {
+	margin-bottom: 1rem;
+}
+.todo-fade {
+	opacity: 0.5;
+}

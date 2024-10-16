@@ -1,0 +1,7 @@
+.todo {
+	transition: opacity 0.3s ease; /* Duration of the fade */
+}
+
+.todo-fade {
+	opacity: 0; /* Fade out effect */
+}
