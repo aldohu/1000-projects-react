@@ -1,0 +1,15 @@
+.NewBox {
+	display: flex;
+	flex-direction: column;
+}
+
+.NewBox label {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 30vw;
+	display: flex;
+	justify-content: space-between;
+}
+.NewBox #color {
+	width: 20vw;
+}
