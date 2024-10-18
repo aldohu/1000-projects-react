@@ -1,0 +1,7 @@
+.Dice {
+	margin: 1em;
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+	color: red;
+}
