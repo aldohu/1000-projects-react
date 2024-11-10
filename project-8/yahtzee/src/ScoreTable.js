@@ -2,7 +2,24 @@ import React from 'react';
 import RuleRow from './RuleRow';
 import './ScoreTable.css';
 
-const ScoreTable = ({ scores, doScore }) => {
+const ScoreTable = ({ scores, doScore, totalScore }) => {
+	// Mapping rule names from UI to actual function names
+	const nameToRuleNameMap = {
+		Ones: 'ones',
+		Twos: 'twos',
+		Threes: 'threes',
+		Fours: 'fours',
+		Fives: 'fives',
+		Sixes: 'sixes',
+		'Three of Kind': 'threeOfKind',
+		'Four of Kind': 'fourOfKind',
+		'Full House': 'fullHouse',
+		'Small Straight': 'smallStraight',
+		'Large Straight': 'largeStraight',
+		Yahtzee: 'yahtzee',
+		Chance: 'chance',
+	};
+
 	// Upper Section
 	const upperSection = [
 		{ name: 'Ones', score: scores.ones },
@@ -35,7 +52,7 @@ const ScoreTable = ({ scores, doScore }) => {
 								key={name}
 								name={name}
 								score={score}
-								doScore={() => doScore(name.toLowerCase())}
+								doScore={() => doScore(nameToRuleNameMap[name])} // Using the mapping for rule names
 							/>
 						))}
 					</tbody>
@@ -50,11 +67,15 @@ const ScoreTable = ({ scores, doScore }) => {
 								key={name}
 								name={name}
 								score={score}
-								doScore={() => doScore(name.replace(/\s+/g, '').toLowerCase())}
+								doScore={() => doScore(nameToRuleNameMap[name])} // Same mapping for lower section
 							/>
 						))}
 					</tbody>
 				</table>
+			</section>
+			<section className="ScoreTable-section ScoreTable-section-total">
+				<h2>Total</h2>
+				<p>{totalScore}</p>
 			</section>
 		</div>
 	);

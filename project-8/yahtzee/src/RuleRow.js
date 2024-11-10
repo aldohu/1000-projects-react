@@ -14,3 +14,5 @@ const RuleRow = ({ name, score, doScore }) => {
 };
 
 export default RuleRow;
+
+// RuleRow.js

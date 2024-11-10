@@ -2,7 +2,7 @@ import React from 'react';
 import './Die.css';
 
 const Die = ({ id, locked, handleClick }) => {
-	const size = 50; // Set the size of the die
+	const size = 40; // Set the size of the die
 
 	const renderSvg = () => {
 		if (id === '1') {
