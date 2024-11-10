@@ -20,6 +20,7 @@ import './Game.css';
 
 const NUM_DICE = 5;
 const NUM_ROLLS = 3;
+const TOTAL_TURNS = 13;
 
 const Game = () => {
 	const [dice, setDice] = useState(
@@ -27,6 +28,8 @@ const Game = () => {
 	);
 	const [locked, setLocked] = useState(Array(NUM_DICE).fill(false));
 	const [rollsLeft, setRollsLeft] = useState(NUM_ROLLS);
+	const [turnsLeft, setTurnsLeft] = useState(TOTAL_TURNS);
+	const [gameOver, setGameOver] = useState(false);
 	const [scores, setScores] = useState({
 		ones: undefined,
 		twos: undefined,
@@ -43,19 +46,35 @@ const Game = () => {
 		chance: undefined,
 	});
 	const [totalScore, setTotalScore] = useState(0);
+
 	const resetGame = () => {
 		setDice(
 			Array.from({ length: NUM_DICE }, () => Math.ceil(Math.random() * 6)),
 		);
-		setLocked(Array(NUM_DICE).fill(false)); // Unlock all dice
-		setRollsLeft(NUM_ROLLS); // Reset the number of rolls
+		setLocked(Array(NUM_DICE).fill(false));
+		setRollsLeft(NUM_ROLLS);
+		setTurnsLeft(TOTAL_TURNS); // Reset turns left to 13
+		setTotalScore(0); // Reset total score
+		setScores({
+			ones: undefined,
+			twos: undefined,
+			threes: undefined,
+			fours: undefined,
+			fives: undefined,
+			sixes: undefined,
+			threeOfKind: undefined,
+			fourOfKind: undefined,
+			fullHouse: undefined,
+			smallStraight: undefined,
+			largeStraight: undefined,
+			yahtzee: undefined,
+			chance: undefined,
+		});
+		setGameOver(false);
 	};
+
 	const roll = () => {
-		if (rollsLeft <= 0) {
-			// Game reset when rolls are over
-			resetGame();
-			return;
-		} // Prevent rolling if no rolls left
+		if (rollsLeft <= 0) return; // Prevent rolling if no rolls left
 
 		setDice((prevDice) =>
 			prevDice.map((d, i) => (locked[i] ? d : Math.ceil(Math.random() * 6))),
@@ -102,12 +121,14 @@ const Game = () => {
 				[rulename]: score, // Set the score for the specific rule
 			}));
 			setTotalScore((prevTotalScore) => prevTotalScore + score);
-			// Reset rolls and locked dice after scoring, except for the 'chance' rule
-			setRollsLeft(NUM_ROLLS);
-			if (rulename !== 'chance') {
-				setLocked(Array(NUM_DICE).fill(false)); // Reset locked state only if it's not 'chance'
+			setTurnsLeft((prevTurnsLeft) => prevTurnsLeft - 1); // Decrease turns left
+
+			if (turnsLeft <= 1) {
+				setGameOver(true); // End the game if no turns are left
+			} else {
+				setRollsLeft(NUM_ROLLS);
+				setLocked(Array(NUM_DICE).fill(false)); // Reset dice locks
 			}
-			resetGame();
 		} else {
 			console.error(`No rule function found for: ${rulename}`);
 		}
@@ -127,7 +148,7 @@ const Game = () => {
 					<div className="Game-button-wrapper">
 						<button
 							className="Game-reroll"
-							disabled={locked.every((x) => x)}
+							disabled={locked.every((x) => x) || rollsLeft === 0}
 							onClick={roll}
 						>
 							{rollsLeft} Rerolls Left
@@ -139,7 +160,25 @@ const Game = () => {
 				doScore={doScore}
 				scores={scores}
 				totalScore={totalScore}
+				turnsLeft={turnsLeft}
 			/>
+			<div className="Game-over">
+				{gameOver && <h2>Game Over!</h2>}
+				<p>Your final score is {totalScore}</p>
+				<button
+					onClick={resetGame}
+					style={{
+						border: 'none',
+						backgroundColor: '#9c27b0',
+						borderRadius: '5px',
+						color: 'white',
+						padding: '10px 20px',
+						cursor: 'pointer',
+					}}
+				>
+					Play Again
+				</button>
+			</div>
 		</div>
 	);
 };
