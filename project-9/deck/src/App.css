@@ -1,0 +1,35 @@
+/* Add these styles to your CSS file */
+.App {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid green;
+	background-color: #ff6f61;
+	height: 100vh;
+	flex-direction: column;
+}
+.card-container {
+	position: relative; /* Ensure container is positioned relatively */
+	width: 300px; /* Adjust as needed */
+	height: 400px; /* Adjust as needed */
+	margin: 0 auto; /* Center the container */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	display: block; /* Center the button */
+	margin: 100px auto; /* Center the button and add margin */
+	padding: 10px 20px; /* Add some padding */
+	background-color: #4caf50; /* Nice green shade */
+	color: white; /* Text color */
+	border: none; /* Remove border */
+	border-radius: 8px; /* Add slight rounding */
+	cursor: pointer; /* Change cursor to pointer on hover */
+	font-size: 16px; /* Adjust font size */
+	transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+	background-color: #007bff; /* Nice soft blue */
+	color: white;
+}

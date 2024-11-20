@@ -1,0 +1,18 @@
+.card {
+	width: 100%;
+	max-width: 100px; /* Make sure cards take full width of container */
+	height: auto; /* Maintain aspect ratio */
+	display: flex;
+	align-items: center;
+
+	margin-top: 200px;
+	justify-content: center;
+	padding-left: 180px;
+}
+
+.card-image {
+	width: 100%;
+	max-width: fit-content; /* Make sure image takes full width of container */
+	height: auto; /* Maintain aspect ratio */
+	border: 1px solid #000; /* Optional, for visibility */
+}
