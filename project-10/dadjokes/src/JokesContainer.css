@@ -1,0 +1,53 @@
+.jokes-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80vh;
+	width: 100%;
+	border: 2px solid black;
+	border-left: none;
+}
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	max-width: 500px;
+	height: 85vh;
+	color: aliceblue;
+	background-color: #6a0dad;
+	border-radius: 5px;
+}
+.smiley-favicon {
+	font-size: 120px;
+}
+.joke-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 80%;
+	list-style-type: none;
+	height: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.joke-list li {
+	margin: 20px 0;
+	text-align: center;
+
+	width: 100%;
+}
+.joke-button {
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+	border: none;
+	font-weight: 900;
+}
+.joke-button:hover {
+	cursor: pointer;
+}
